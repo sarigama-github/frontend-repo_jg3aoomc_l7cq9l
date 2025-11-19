@@ -3,26 +3,43 @@ import Hero3D from './components/Hero3D'
 import Services from './components/Services'
 import ScrollShowcase from './components/ScrollShowcase'
 import ProcessTimeline from './components/ProcessTimeline'
+import ScrollProgress from './components/ScrollProgress'
+import InteractiveGrid from './components/InteractiveGrid'
 
 function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-300/30">
+      {/* Ambient gradients */}
       <div className="fixed inset-0 -z-20 bg-[radial-gradient(120%_80%_at_50%_-10%,#0b1220,transparent),radial-gradient(120%_80%_at_50%_110%,#0b1220,transparent)]" />
       <div className="pointer-events-none fixed inset-0 -z-10 opacity-40 mix-blend-screen" style={{ background: 'radial-gradient(80% 60% at 20% 0%, rgba(34,211,238,.15), transparent 60%), radial-gradient(80% 60% at 80% 100%, rgba(59,130,246,.2), transparent 60%)' }} />
 
+      {/* Scroll progress bar */}
+      <ScrollProgress />
+
       <Navbar />
       <main>
+        {/* Hero with resilient 3D + graceful fallback */}
         <Hero3D />
+
+        {/* Feature grid with hover reveals */}
+        <InteractiveGrid />
+
+        {/* Core services with motion */}
         <Services />
+
+        {/* Scroll‑reactive photo showcase */}
         <ScrollShowcase />
+
+        {/* Process timeline */}
         <ProcessTimeline />
 
+        {/* Reviews */}
         <section id="reviews" className="py-24">
           <div className="max-w-6xl mx-auto px-6 md:px-8">
             <h2 className="text-3xl md:text-5xl font-bold text-center">Customers love moving with us</h2>
             <div className="mt-10 grid md:grid-cols-3 gap-6">
               {["Best move I've had — on time, careful, and fast.", 'Communication was stellar the whole way.', 'They packed everything perfectly. Worth it.'].map((q, i) => (
-                <div key={i} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6">
+                <div key={i} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:-translate-y-1 transition-transform">
                   <p className="text-white/90">“{q}”</p>
                   <div className="mt-4 flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-white/20" />
@@ -37,6 +54,7 @@ function App() {
           </div>
         </section>
 
+        {/* Call to action */}
         <section id="cta" className="relative py-24">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_50%_50%,rgba(34,211,238,0.15),transparent)]" />
           <div className="max-w-4xl mx-auto px-6 md:px-8">
